@@ -1,0 +1,118 @@
+public class Camion {
+    private int codigo;
+    private String patente;
+    private int cantEjes;
+    private int capacidad;
+    private boolean acoplado;
+    
+    // Constructores
+    public Camion(int cod){
+    codigo = cod;
+    patente = "";
+    cantEjes = 0;
+    capacidad = 0;
+    acoplado = false;
+    }
+
+    public Camion(int cod, String pat, int cEjes, int cap, boolean acopl){
+    codigo = cod;
+    patente = pat;   
+    cantEjes = cEjes;
+    capacidad = cap;
+    acoplado = acopl;
+    }
+
+    // Modificadores
+    public void setPatente(String pat){
+    patente = pat;
+    }
+    public void setCantEjes(int cEjes){
+    cantEjes = cEjes;
+    }
+    public void setCapacidad(int cap){
+    capacidad = cap;
+    }
+    public void setAcoplado(boolean acopl){
+    acoplado = acopl;
+    }
+    
+    // Observadores
+    
+    public int getCodigo(){
+    return codigo;
+    }
+    public String getPatente(){
+    return patente;
+    }
+    public int getCantEjes(){
+    return cantEjes;
+    } 
+    public int getCapacidad(){
+    return capacidad;
+    }
+    public boolean getAcoplado(){
+    return acoplado;
+    }
+    public String toString(){
+    return "Codigo " + codigo + ", Patente " + patente + ", Cantidad de Ejes " + cantEjes + ", Capacidad " + capacidad + " Acoplado " + acoplado;
+    }
+
+    // Comparativas
+    
+    public boolean equals(Camion c){
+    return (this.codigo == c.getCodigo());
+    }
+}
+
+import java.util.Scanner;
+public class TestCamiones(){
+    public static void main(String[] args){
+     Scanner sc = new Scanner(System.in);
+     // Atributos
+     int codigo;
+     String patente;
+     int cantEjes;
+     int capacidad;
+     boolean acoplado;
+     Camion  camion; 
+    System.out.println("Ingrese el codigo: ");
+    codigo = sc.nextInt();
+    System.out.println("Ingrese la patente: ");
+    patente = sc.next();
+    System.out.println("Ingrese la cantidad de ejes: ");
+    cantEjes = sc.nextInt();
+    System.out.println("Ingrese la capacidad del camion: ");
+    capacidad = sc.nextInt();
+    System.out.println("Ingrese si tiene acoplado o no (true/false).");
+    acoplado = sc.nextBoolean();
+    camion = new Camion(codigo, patente, cantEjes, capacidad, acoplado);
+    boolean terminar = false;
+    String opcion;
+    do{
+    System.out.println("Ingrese una opcion ");
+    opcion  = sc.next();
+    switch(opcion){
+    case "1":
+    System.out.println("Los datos del camion ingresado son + " camion.toString());
+    break;
+    case "2":
+    if(camion.getCanteEjes()==3 && (acoplado == false)){
+    System.out.println(camion.toString());
+    } else {
+    System.out.println("No cumpleo con los requisitos");
+    }
+    break;
+    case "3":
+    if(camion.getCapacidad()<5000){
+    System.out.println(camion.toString());
+    } else{
+    System.out.println("No cumpleo con los requisitos");
+    }
+    break;
+    default: 
+    terminar = true;
+    break;
+    }
+    }while(!terminar);    
+    }
+}
