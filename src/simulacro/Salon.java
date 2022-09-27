@@ -28,9 +28,6 @@ public class Salon{
     telefono = 0;
     }
 
-    Salon(String nombre, int disponibilidad, boolean musica, String direccion, int telefono) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     // Observadores
     public String getNombre(){
